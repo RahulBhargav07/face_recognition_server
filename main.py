@@ -87,6 +87,9 @@ async def internal_error_handler(request, exc):
     return JSONResponse(status_code=500, content={"detail": "Internal server error"})
 
 if __name__ == "__main__":
-    port = int(os.getenv("PORT", 8001))
-    host = os.getenv("HOST", "0.0.0.0")
-    uvicorn.run("main:app", host=host, port=port, reload=True)
+    import os
+    import uvicorn
+
+    port = int(os.environ.get("PORT", 10000))
+    uvicorn.run("main:app", host="0.0.0.0", port=port)
+
