@@ -1,8 +1,10 @@
 services:
   - type: web
-    name: face_recognition_server
+    name: face-recognition-api
     env: python
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn main:app --host=0.0.0.0 --port=10000
-    runtime: docker
-    dockerfilePath: ./Dockerfile
+    plan: free
+    envVars:
+      - key: PORT
+        value: 10000
